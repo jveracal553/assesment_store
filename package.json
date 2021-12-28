@@ -1,7 +1,7 @@
 {
   "name": "assesment",
   "version": "0.1.0",
-  "homepage": "https://jveracal553.github.io/assesment_store/",
+  "homepage": "https://jveracal553.github.io/assesment_store/home",
   "private": true,
   "dependencies": {
     "@chakra-ui/react": "^1.7.3",

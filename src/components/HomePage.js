@@ -31,7 +31,7 @@ const StoreItem = ({ title, price, image, category }) => {
 
   return (
     <Box p={4} borderRadius="lg" borderWidth="1px">
-      <Tag mt={2} colorScheme={"yellow"}>
+      <Tag mt={2} colorScheme={"red"}>
         <Countdown date={Date.now() + rand} renderer={renderer}></Countdown>s
       </Tag>
 
