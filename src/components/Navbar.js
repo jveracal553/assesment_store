@@ -15,7 +15,7 @@ const Navbar = () => {
               d="flex"
               alignItems="center"
             >
-              <Link to="/home">Home</Link>
+              <Link to="/">Home</Link>
             </Box>
             <Box
               fontWeight={"bold"}

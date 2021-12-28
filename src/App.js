@@ -9,7 +9,7 @@ function App() {
     <Router>
       <Navbar></Navbar>
       <Switch>
-        <Route exact path="/home" component={(props) => <HomePage />} />
+        <Route exact path="/" component={(props) => <HomePage />} />
         <Route
           path="/detalle/:id"
           component={(props) => <ProductCard {...props} />}
