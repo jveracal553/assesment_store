@@ -42,9 +42,9 @@ function ProductCard({}) {
               @jveracal553
             </a>
             <HStack>
-              <Tag>Data Analyst</Tag>
-              <Tag>Web Developer</Tag>
-              <Tag>Peruvian</Tag>
+              <Tag fontSize={"12px"}>Data Analyst</Tag>
+              <Tag fontSize={"12px"}>Web Developer</Tag>
+              <Tag fontSize={"12px"}>Peruvian</Tag>
             </HStack>
           </VStack>
           <GridItem mt={4} ml={3} fontSize={"13px"}>

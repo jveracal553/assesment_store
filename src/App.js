@@ -15,7 +15,7 @@ function App() {
           component={(props) => <ProductCard {...props} />}
         />
         <Route path="/about" component={(props) => <About />}></Route>
-        {/* <Route>404 Page </Route> */}
+        <Route>404 Page </Route>
       </Switch>
     </Router>
   );

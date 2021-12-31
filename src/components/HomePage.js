@@ -17,11 +17,18 @@ import axios from "axios";
 import Countdown from "react-countdown";
 
 const StoreItem = ({ title, price, image, category }) => {
-  const min = 19000;
-  const max = 99000;
+  const min = 15;
+  const max = 80000;
   const rand = min + Math.random() * (max - min);
+  const [isActive, setActive] = useState(true);
 
   const renderer = ({ minutes, seconds }) => {
+    // console.log(seconds);
+
+    if (seconds == 0 && minutes == 0) {
+      setActive(false);
+      console.log(seconds);
+    }
     return (
       <span>
         0{minutes}:{seconds}
@@ -31,52 +38,74 @@ const StoreItem = ({ title, price, image, category }) => {
 
   return (
     <Box p={4} borderRadius="lg" borderWidth="1px">
-      <Tag mt={2} colorScheme={"red"}>
-        <Countdown date={Date.now() + rand} renderer={renderer}></Countdown>s
-      </Tag>
-
-      <Center>
-        <Image src={image} w={24} h={24}></Image>
-      </Center>
-      <Heading mt={4} noOfLines={1} size="sm" fontWeight="Normal">
-        {title}
-      </Heading>
-      <Spacer />
-      <Box>
-        <Center>
-          <Tag mt={2}>{category}</Tag>
-        </Center>
-      </Box>
-      <HStack>
+      {isActive ? (
         <Box>
+          <Tag mt={2} colorScheme={"green"}>
+            <Countdown date={Date.now() + rand} renderer={renderer}></Countdown>
+            s
+          </Tag>
+
           <Center>
-            <Tag mt={2}>${price}</Tag>
+            <Image src={image} w={24} h={24}></Image>
           </Center>
+          <Heading mt={4} noOfLines={1} size="sm" fontWeight="Normal">
+            {title}
+          </Heading>
+          <Spacer />
+          <Box>
+            <Center>
+              <Tag mt={2}>{category}</Tag>
+            </Center>
+          </Box>
+          <HStack>
+            <Box>
+              <Center>
+                <Tag mt={2}>${price}</Tag>
+              </Center>
+            </Box>
+          </HStack>
         </Box>
-      </HStack>
+      ) : (
+        <Box>
+          <Tag mt={2} colorScheme={"red"}>
+            <h1>Expired!</h1>
+          </Tag>
+
+          <Center>
+            <Image src={image} w={24} h={24}></Image>
+          </Center>
+          <Heading mt={4} noOfLines={1} size="sm" fontWeight="Normal">
+            {title}
+          </Heading>
+          <Spacer />
+          <Box>
+            <Center>
+              <Tag mt={2}>{category}</Tag>
+            </Center>
+          </Box>
+          <HStack>
+            <Box>
+              <Center>
+                <Tag mt={2}>${price}</Tag>
+              </Center>
+            </Box>
+          </HStack>
+        </Box>
+      )}
     </Box>
   );
 };
 
 function HomePage({}) {
   const [storeItem, setStoreItem] = useState([]);
-  // const [filteredItems, setFilteredItems] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     axios.get("https://fakestoreapi.com/products").then(({ data }) => {
       setLoading(false);
-      setVisible(false);
-
       setStoreItem(data);
-      // setFilteredItems(data);
     });
   }, []);
-
-  // useEffect(() => {
-  //   setFilteredItems(storeItem);
-  // }, [storeItem]);
 
   return (
     <Box>
